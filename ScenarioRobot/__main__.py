@@ -74,24 +74,24 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Hey there, I'm *Scenario*!
-I'm here to help you manage your groups! Hit Help button below to find out more about how to use me to my full potential[.](https://telegra.ph/file/8ff10f74d4be5aa1b36aa.jpg)
+Hey there, I'm *PROFESSOR-AGORA*!
+I'm here to help you manage your groups! Hit Help button below to find out more about how to use me to my full potential[.](https://telegra.ph/file/d44485eff4a2902635313.jpg)
 """
 
 buttons = [
     [
         InlineKeyboardButton(
-            text="Aᴅᴅ Mᴇ", url="t.me/ScenarioRobot?startgroup=true"),
+            text="Aᴅᴅ Mᴇ", url="t.me/masti_in_dosti?startgroup=true"),
     ],
     [
-        InlineKeyboardButton(text="Aʙᴏᴜᴛ", callback_data="scenario_"),
+        InlineKeyboardButton(text="Aʙᴏᴜᴛ", callback_data="PROFESSOR-AGORA_"),
         InlineKeyboardButton(text="Hᴇʟᴘ", callback_data="help_back"),
     ],
     [
         InlineKeyboardButton(
-            text="News", url="t.me/TeamScenario"),
+            text="News", url="t.me/masti_in_dosti"),
         InlineKeyboardButton(
-            text="Sᴜᴘᴘᴏʀᴛ", url="https://t.me/TeamScenario"
+            text="Sᴜᴘᴘᴏʀᴛ", url="https://t.me/masti_in_dosti"
         ),
     ],
 ]
@@ -103,7 +103,7 @@ HELP_STRINGS = """
  • `/help` `<module name>`*:* PM's you info about that module.
  • `/donate`*:* information on how to donate!
  • `/settings`*:*
-   - in PM: will send you your settings for all supported modules[.](https://telegra.ph/file/8ff10f74d4be5aa1b36aa.jpg)
+   - in PM: will send you your settings for all supported modules[.](https://telegra.ph/file/d44485eff4a2902635313.jpg)
    - in a group: will redirect you to pm, with all that chat's settings.
 
 """
@@ -125,7 +125,7 @@ CHAT_SETTINGS = {}
 USER_SETTINGS = {}
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("ScenarioRobot.modules." + module_name)
+    imported_module = importlib.import_module("PROFESSOR-AGORA.modules." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
 
@@ -367,18 +367,18 @@ def Scenario_about_callback(update: Update, context: CallbackContext):
 
 \n_Scenario's licensed under the GNU General Public License v3.0_
 
-Have any question about Scenario?, let us know at @TeamScenario.""",
+Have any question about Agora?, let us know at @TeamAgora.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="👈", callback_data="scenario_back")
+                    InlineKeyboardButton(text="👈", callback_data="Agora_back")
                  ]
                 ]
             ),
         )
-    elif query.data == "scenario_back":
+    elif query.data == "Agora_back":
         query.message.edit_text(
                 PM_START_TEXT,
                 reply_markup=InlineKeyboardMarkup(buttons),
@@ -393,8 +393,8 @@ def Source_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "source_":
         query.message.edit_text(
-            text=""" Hi.. I'm *ScenarioRobot*
-                 \nHere is the [Source Code](https://github.com/ScenarioRobot/ScenarioRobotOfficial) .""",
+            text=""" Hi.. I'm *AgoraRobot*
+                 \nHere is the [Source Code](https://github.com/MR-KANNADIGA/PROFESSOR-AGORA) .""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -641,7 +641,7 @@ def donate(update: Update, context: CallbackContext):
             DONATE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True
         )
 
-        if OWNER_ID != 2144966937 and DONATION_LINK:
+        if OWNER_ID != 5201305448 and DONATION_LINK:
             update.effective_message.reply_text(
                 "You can also donate to the person currently running me "
                 "[here]({})".format(DONATION_LINK),
@@ -689,7 +689,7 @@ def main():
 
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
-            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "ScenarioRobot Updated! 🔥")
+            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "PROFESSOR-AGORA Updated! 🔥")
         except Unauthorized:
             LOGGER.warning(
                 "Bot isnt able to send message to support_chat, go and check!"
@@ -706,7 +706,7 @@ def main():
     settings_handler = CommandHandler("settings", get_settings)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
-    about_callback_handler = CallbackQueryHandler(Scenario_about_callback, pattern=r"scenario_")
+    about_callback_handler = CallbackQueryHandler(Scenario_about_callback, pattern=r"PROFESSOR-AGORA_")
     source_callback_handler = CallbackQueryHandler(Source_about_callback, pattern=r"source_")
 
     donate_handler = CommandHandler("donate", donate)
