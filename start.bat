@@ -1,4 +1,4 @@
 @echo off
-TITLE SCENARIO ROBOT
-:: Enables virtual env mode and then start ScenarioRobot
-env\scripts\activate.bat && py -m ScenarioRobot
+TITLE PROFESSOR-AGORA 
+:: Enables virtual env mode and then start AGORA BOT
+env\scripts\activate.bat && py -m PROFESSOR-AGORA
