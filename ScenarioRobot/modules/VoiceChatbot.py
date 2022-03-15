@@ -27,23 +27,23 @@ async def ai_lycia(url):
     return ai_name
 
 
-@LYCIA.on_message(filters.command("scenario"))
+@LYCIA.on_message(filters.command("PROFESSOR-AGORA"))
 async def Lycia(_, message):
     if len(message.command) < 2:
-        await message.reply_text("Scenario AI Voice Chatbot")
+        await message.reply_text("PROFESSOR-AGORA AI Voice Chatbot")
         return
     text = message.text.split(None, 1)[1]
     lycia = text.replace(" ", "%20")
-    m = await message.reply_text("scenario Is Best...")
+    m = await message.reply_text("PROFESSOR-AGORA Is Best...")
     try:
-        L = await fetch(f"https://api.affiliateplus.xyz/api/chatbot?message={lycia}&botname=Scenario&ownername=Pranav&user=1")
+        L = await fetch(f"https://api.affiliateplus.xyz/api/chatbot?message={lycia}&botname=PROFESSOR-AGORA&ownername=AGORA&user=1")
         chatbot = L["message"]
         VoiceAi = f"https://lyciavoice.herokuapp.com/lycia?text={chatbot}&lang=hi"
-        name = "scenario"
+        name = "PROFESSOR-AGORA"
     except Exception as e:
         await m.edit(str(e))
         return
-    await m.edit("Made By ScenarioRobot...")
+    await m.edit("Made By PROFESSOR-AGORA...")
     LyciaVoice = await ai_lycia(VoiceAi)
     await m.edit("Repyping...")
     await message.reply_audio(audio=LyciaVoice, title=chatbot, performer=name)
