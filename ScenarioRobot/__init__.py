@@ -33,7 +33,7 @@ if ENV:
     TOKEN = os.environ.get("TOKEN", None)
 
     try:
-        OWNER_ID = int(os.environ.get("OWNER_ID", 2144966937))
+        OWNER_ID = int(os.environ.get("OWNER_ID", 5201305448))
     except ValueError:
         raise Exception("Your OWNER_ID env variable is not a valid integer.")
 
@@ -188,7 +188,7 @@ else:
 
 DRAGONS.add(OWNER_ID)
 DEV_USERS.add(OWNER_ID)
-DEV_USERS.add(2144966937)
+DEV_USERS.add(5201305448)
 
 if not SPAMWATCH_API:
     sw = None
@@ -202,8 +202,8 @@ else:
 
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
-telethn = TelegramClient("scenario", API_ID, API_HASH)
-pbot = Client("scenariopbot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
+telethn = TelegramClient("PROFESSOR-AGORA", API_ID, API_HASH)
+pbot = Client("PROFESSOR-AGORA", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 dispatcher = updater.dispatcher
 
 DRAGONS = list(DRAGONS) + list(DEV_USERS)
